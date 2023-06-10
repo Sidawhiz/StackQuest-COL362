@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Question's Page</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/questions.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function display() {
+            var user_question = document.getElementById('UserQuestion');
+            user_question.innerHTML = question[0][5];
+        });
+    </script>
+  </head>
+  <body>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/register" method="GET">Register</a>
+        
+        <a href="/askquestion">Ask a Question</a>
+      </div>
+    
+    <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-center row">
+            <div class="d-flex flex-column col-md-8">
+                <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-4">
+                    <div class="profile-image"><img class="rounded-circle" src={{user[0][11]}} alt="Not Found" onerror=this.src="../static/anon_poet.jpeg" width="70"></div>
+                    <div class="d-flex flex-column-reverse flex-grow-0 align-items-center votings ml-1">
+                        <form action="/upvote_question/{{question[0][0]}}" method="post">
+                            <i onclick="this.parentNode.submit()" class="fa fa-sort-up fa-2x hit-voting"></i>
+                        </form>
+                            <span>{{question[0][3]}}</span>
+                        <form action="/downvote_question/{{question[0][0]}}" method="post">
+                            <i onclick="this.parentNode.submit()" class="fa fa-sort-down fa-2x hit-voting"></i></div>
+                        </form>
+                    <div class="d-flex flex-column ml-3">
+                        <div class="d-flex flex-row">
+                            
+                            <div class="scroll"> 
+                                <h4>{{question[0][4]}}</h4> 
+                                <td id = "UserQuestion">{{question[0][5]}}</td>
+                            </div>  
+                        </div>
+                        <div class="d-flex flex-row align-items-center align-content-center post-title"><span class="bdge mr-1">{{user[0][1]}}</span><span class="mr-2 comments">{{num_answer}} Answers</span><span class="mr-2 dot"></span><span>{{question[0][2]}}</span></div>
+                    </div>
+                </div>
+                <div class="container" style="width: 75%;">  
+                    <form id="contact" action="/question/{{question[0][0]}}" method="post">
+                      <h3>Answer</h3>
+                      <fieldset>
+                        <input name = "username" placeholder="Username(should be a registered)" type="text" tabindex="1" required autofocus>
+                      </fieldset>
+                      <fieldset>
+                        <textarea name="body" placeholder="Type your question here...." tabindex="3" required></textarea>
+                      </fieldset>
+                      <fieldset>
+                        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                      </fieldset>
+                    </form>
+                  </div>
+                {% for answer in answers %}
+                <div class="coment-bottom bg-white p-2 px-4">
+                    <div class="commented-section mt-2">
+                        <div class="d-flex flex-row align-items-center commented-user">
+                            <h5 class="mr-2">{{answer[3]}}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{answer[2]}}</span>
+                        </div>
+                        <div class="comment-text-sm"><span>{{answer[0]}}</span></div>
+                        <div class="reply-section">
+                            <div class="d-flex flex-row align-items-center voting-icons">
+                                <form action="/upvote_answer/{{question[0][0]}}/{{answer[4]}}" method="post">
+                                    <i  onclick="this.parentNode.submit()"  class="fa fa-sort-up fa-2x mt-3 hit-voting"></i>
+                                </form>
+                                <form action="/downvote_answer/{{question[0][0]}}/{{answer[4]}}" method="post">
+                                    <i onclick="this.parentNode.submit()" class="fa fa-sort-down fa-2x mb-3 hit-voting"></i>
+                                </form>
+                                <span class="ml-2">{{answer[1]}}</span>
+                                <span class="dot ml-2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

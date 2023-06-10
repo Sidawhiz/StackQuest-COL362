@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../static/style_ask.css">
+</head>
+<body>
+    <!-- <img style="display:block;"  width="100%" height="100%" src=../static/bg1.jpg alt="Not Found" > -->
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/register" method="GET">Register</a>
+        
+        <a href="/askquestion">Ask a Question</a>
+    </div>
+
+    <div class="container">  
+        <form id="contact" action="/askquestion" method="post">
+          <h3>Ask a Question</h3>
+          <fieldset>
+            <input name = "username" placeholder="Username(should be a registered)" type="text" tabindex="1" required autofocus>
+          </fieldset>
+          <fieldset>
+            <input name="title" placeholder="Title of your Question" type="text" tabindex="2" required>
+          </fieldset>
+          <fieldset>
+            <textarea name="body" placeholder="Type your question here...." tabindex="3" required></textarea>
+          </fieldset>
+          <fieldset>
+            <textarea name="tags" placeholder="Enter relevant tags(comma separated)" tabindex="4" required></textarea>
+          </fieldset>
+          <fieldset>
+            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+          </fieldset>
+        </form>
+      </div>
+</body>
+  
+</html>

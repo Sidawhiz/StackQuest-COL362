@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../static/register.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+
+<form id="signupform" action="/user" method="POST">
+  <div class="container" id="regform">
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="Name"><b>Name</b></label>
+    <br>
+    <input type="text" placeholder="Enter Full Name" name="Name" id="Name" required>
+    <!-- Hidden error msg -->
+    <div id="NameError" class="errorMsg">
+      <p>{{error}}</p>
+    </div>
+
+    <!-- <div id="msg"></div> -->
+    <br>
+    <label for="Age"><b>Age</b></label>
+    <br>
+    <input type="number" placeholder="Age" name="Age" id="Age">
+    <br>
+    <label for="AboutMe"><b>Bio</b></label>
+    <br>
+    <input type="text" placeholder="About You" name="AboutMe" id="AboutMe">
+    <br>
+    <label for="Location"><b>Location</b></label>
+    <br>
+    <input type="text" placeholder="Location" name="Location" id="Location">
+    <br>
+    <label for="imageurl"><b>Profile Image URL</b></label>
+    <br>
+    <input type="url" placeholder="Profile Image URL" name="imageurl" id="imageurl">
+    <br>
+    <label for="WebsiteUrl"><b>Website URL</b></label>
+    <br>
+    <input type="url" placeholder="Website URL" name="WebsiteUrl" id="WebsiteUrl">
+    <hr>
+    <!-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+  
+  <!-- <div class="container signin">
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+  </div> -->
+</form>
+
+<form id="signupform" action="/user_signin" method="POST">
+  <div class="container" id="regform">
+    <h2>Already Registered?</h2>
+    <hr>
+
+    <label for="Name"><b>Name</b></label>
+    <br>
+    <input type="text" placeholder="Enter Full Name" name="Name" id="Name" required>
+    <!-- Hidden error msg -->
+    <div id="NameError2" class="errorMsg2">
+      <p>{{error2}}</p>
+    </div>
+
+    <!-- <div id="msg"></div> -->
+    <br>
+    <hr>
+    <!-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
+
+    <button type="submit" class="signinbtn">Sign In</button>
+  </div>
+  
+  <!-- <div class="container signin">
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+  </div> -->
+</form>
+
+
+<div class="topnav">
+    <a href="/">Home</a>
+    <a href="/register" method="GET">Register</a>
+    
+    <a href="/askquestion">Ask a Question</a>
+  </div>
+</body>
+</html>

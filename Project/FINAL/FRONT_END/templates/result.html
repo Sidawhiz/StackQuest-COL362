@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../static/style_results.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- FontAwesome CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="{{url_for('static', filename='script.js')}}"></script>
+    </head>
+   <body>
+    <div class="topnav">
+      <a href="/">Home</a>
+      <a href="/register" method="GET">Register</a>
+      
+      <a href="/askquestion">Ask a Question</a>
+  </div>
+    <div class="text-center">
+        <h2 class="mt-5 mb-5" style="color:brown"><u>Relevant Questions</u></h2>
+      </div>
+      <section class="container my-5" id="maincontent">
+        <section id="accordion">
+          {% for item in question_answer %}
+          <a class="py-3 d-block h-100 w-100 position-relative z-index-1 pr-1 text-secondary border-top" aria-controls="faq-{{item[0][0]}}" aria-expanded="false" data-toggle="collapse" href="#faq-{{item[0][0]}}" role="button">
+            <div class="position-relative">
+              <h2 class="h4 m-0 pr-3" >
+                {{item[0][4]}}
+              </h2>
+              <div class="position-absolute top-0 right-0 h-100 d-flex align-items-center">
+                <i class="fa fa-plus"></i>
+              </div>
+            </div>
+          </a>
+          <div class="collapse" id="faq-{{item[0][0]}}" style="">
+            <div class="card card-body border-0 p-0">
+              {{item[1][0][5]}}
+              <br>
+              <a href = "/question/{{item[0][0]}}"> Go to Question's Page</a>
+            </div>
+          </div>
+          {% endfor %}
+
+        </section>
+      </section>
+   </body>
+</html>

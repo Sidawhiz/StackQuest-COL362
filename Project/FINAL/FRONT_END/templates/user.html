@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/user.css">
+</head>
+<body>
+
+<h2 style="text-align:center; position: relative; top: 30%;">User Profile Card</h2>
+
+<div class="card">
+  <img src={{imageurl}} alt="Not Found" onerror=this.src="../static/anon_poet.jpeg" style="width:100%">
+  <h1>{{name}}</h1>
+
+  <a id="websitebtn" href={{website}}>Website</a>
+</div>
+<h3>Bio:</h3>
+<p class="bio">{{bio}}</p>
+<h3>Website:</h3>
+<p class="bio">{{website}}</p>
+<h3>Location:</h3>
+<p class="bio">{{location}}</p>
+
+<!-- center aligned table for user statistics -->
+<table class="Stattable" align="center">
+  <tr>
+    <th></th>
+    <th>User Statistics</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>Reputation: </td>
+    <td>Up Votes </td>
+    <td>Down Votes</td>
+    
+  </tr>
+  <tr>
+    <td>{{reputation}} </td>
+    <td>{{up_votes}} </td>
+    <td>{{down_votes}} </td>
+  </tr>
+</table>
+<div class="topnav">
+    <a href="/">Home</a>
+    <a href="/register" method="GET">Register</a>
+    
+    <a href="/askquestion">Ask a Question</a>
+  </div>
+  
+  <!-- <img style="display:block; position: absolute; top: 0px;"  width="100%" height="100%" src="https://images.pexels.com/photos/1269968/pexels-photo-1269968.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Not Found" > -->
+</body>
+</html>
